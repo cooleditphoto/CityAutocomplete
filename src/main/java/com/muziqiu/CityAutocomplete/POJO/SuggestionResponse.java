@@ -1,7 +1,5 @@
 package com.muziqiu.CityAutocomplete.POJO;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.muziqiu.CityAutocomplete.model.Geoname;
 import org.springframework.stereotype.Component;
 
 @Component

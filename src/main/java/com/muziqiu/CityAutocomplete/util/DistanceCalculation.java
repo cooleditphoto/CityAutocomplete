@@ -2,7 +2,7 @@ package com.muziqiu.CityAutocomplete.util;
 
 public class DistanceCalculation {
 
-    //Haversine formula return value is in kilometers
+    //Haversine formula, return value is in kilometers
     public static double calculateDistance(double querylatitude, double querylongitude, double latitude, double longitude) {
         double R = 6371;
         double dLat = (querylatitude - latitude) * (Math.PI / 180);

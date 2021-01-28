@@ -15,7 +15,7 @@ public class Geoname {
     public Geoname() {
     }
 
-    public Geoname(int geonameId, String name, String asciiname, String alternatename, double latitude, double longitude,  long population) {
+    public Geoname(int geonameId, String name, String asciiname, String alternatename, double latitude, double longitude, long population) {
         this.geonameId = geonameId;
         this.name = name;
         this.asciiname = asciiname;

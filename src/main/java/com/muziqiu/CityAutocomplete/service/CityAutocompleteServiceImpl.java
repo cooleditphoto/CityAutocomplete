@@ -9,20 +9,19 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class CityAutocompleteServiceImpl implements CityAutocompleteService{
+public class CityAutocompleteServiceImpl implements CityAutocompleteService {
     private static final Logger log = LoggerFactory.getLogger(CityAutocompleteServiceImpl.class);
 
     @Autowired
     private GeonameEntityDAO geonameEntityDAO;
 
     public List<SuggestionResponse> getSuggestedCities(String query, double latitude, double longitude) {
-        List<Geoname> geonameList = geonameEntityDAO.getGeoNameByPartialNameAndLocation(query,latitude,longitude);
+        List<Geoname> geonameList = geonameEntityDAO.getGeoNameByPartialNameAndLocation(query, latitude, longitude);
 
         List<SuggestionResponse> suggestionResponseList = geonameList.stream().map(geoname -> setSuggestionResponse(geoname, query, latitude, longitude)).collect(Collectors.toList());
         suggestionResponseList.sort(Comparator.comparing(SuggestionResponse::getScore).reversed());
@@ -40,7 +39,7 @@ public class CityAutocompleteServiceImpl implements CityAutocompleteService{
     }
 
     private double calculateScoreByQueryandPopulation(Geoname geoname, String query) {
-       double score = 0;
+        double score = 0;
         int lengthScore = geoname.getName().length() / query.length();
 
         if (lengthScore == 1) {
@@ -86,11 +85,11 @@ public class CityAutocompleteServiceImpl implements CityAutocompleteService{
 
     private SuggestionResponse setSuggestionResponse(Geoname geoname, String query, double latitude, double longitude) {
         double score = calculateScoreByQueryandLocationandPopulation(geoname, query, latitude, longitude);
-        return new SuggestionResponse(geoname.getGeonameId(),geoname.getName(), geoname.getLongitude(), geoname.getLatitude(), score);
+        return new SuggestionResponse(geoname.getGeonameId(), geoname.getName(), geoname.getLongitude(), geoname.getLatitude(), score);
     }
 
     private SuggestionResponse setSuggestionResponse(Geoname geoname, String query) {
         double score = calculateScoreByQueryandPopulation(geoname, query);
-        return new SuggestionResponse(geoname.getGeonameId(),geoname.getName(), geoname.getLongitude(), geoname.getLatitude(), score);
+        return new SuggestionResponse(geoname.getGeonameId(), geoname.getName(), geoname.getLongitude(), geoname.getLatitude(), score);
     }
 }

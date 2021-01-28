@@ -8,16 +8,17 @@ public enum ResultCode {
 
     private Integer code;
     private String message;
-    ResultCode(Integer code, String message){
+
+    ResultCode(Integer code, String message) {
         this.code = code;
         this.message = message;
     }
 
-    public Integer code(){
+    public Integer code() {
         return this.code;
     }
 
-    public String message(){
+    public String message() {
         return this.message;
     }
 

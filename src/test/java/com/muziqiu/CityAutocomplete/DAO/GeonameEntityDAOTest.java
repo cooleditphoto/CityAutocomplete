@@ -2,15 +2,14 @@ package com.muziqiu.CityAutocomplete.DAO;
 
 import com.muziqiu.CityAutocomplete.model.Geoname;
 import org.junit.Before;
-import org.junit.BeforeClass;
-import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.List;
 import java.util.stream.Collectors;
+
+import static org.assertj.core.api.Assertions.assertThat;
 
 @SpringBootTest
 public class GeonameEntityDAOTest {
@@ -29,14 +28,14 @@ public class GeonameEntityDAOTest {
     @Test
     void testGetGeonamesByPartialName() {
         List<Geoname> list = geonameEntityDAO.getGeoNameByPartialName("lon");
-        assertThat(1==list.size());
+        assertThat(1 == list.size());
         assertThat("London".equals(list.get(0).getName()));
     }
 
     @Test
     void testGetGeonamesByPartialNameandLocation() {
-        List<Geoname> list = geonameEntityDAO.getGeoNameByPartialNameAndLocation("lon",45d,-73d);
-        assertThat(2==list.size());
+        List<Geoname> list = geonameEntityDAO.getGeoNameByPartialNameAndLocation("lon", 45d, -73d);
+        assertThat(2 == list.size());
         assertThat("London,Montreal".equals(list.stream().map(Geoname::getName).collect(Collectors.joining())));
     }
 

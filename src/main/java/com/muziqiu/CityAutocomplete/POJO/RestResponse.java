@@ -9,18 +9,18 @@ public class RestResponse {
     String message;
     private Object data;
 
-    public RestResponse(){
+    public RestResponse() {
 
     }
 
-    public static RestResponse succuess(){
+    public static RestResponse succuess() {
         RestResponse restResponse = new RestResponse();
         restResponse.setResultCode(ResultCode.SUCCESS);
 
         return restResponse;
     }
 
-    public static RestResponse succuess(Object data){
+    public static RestResponse succuess(Object data) {
         RestResponse restResponse = new RestResponse();
         restResponse.setResultCode(ResultCode.SUCCESS);
         restResponse.setData(data);
@@ -66,7 +66,8 @@ public class RestResponse {
 
         return restResponse;
     }
-    private void setResultCode(ResultCode resultCode){
+
+    private void setResultCode(ResultCode resultCode) {
         this.statusCode = resultCode.code();
         this.message = resultCode.message();
     }
