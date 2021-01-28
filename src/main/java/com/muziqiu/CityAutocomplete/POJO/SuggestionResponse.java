@@ -6,6 +6,9 @@ import org.springframework.stereotype.Component;
 public class SuggestionResponse {
     int id;
     String name;
+    String asciiname;
+    String alternatename;
+    Long population;
     double longitude;
     double latitude;
     double score;
@@ -13,9 +16,12 @@ public class SuggestionResponse {
     public SuggestionResponse() {
     }
 
-    public SuggestionResponse(int id, String name, double longitude, double latitude, double score) {
+    public SuggestionResponse(int id, String name, String asciiname, String alternatename, Long population, double longitude, double latitude, double score) {
         this.id = id;
         this.name = name;
+        this.asciiname = asciiname;
+        this.alternatename = alternatename;
+        this.population = population;
         this.longitude = longitude;
         this.latitude = latitude;
         this.score = score;
@@ -59,5 +65,29 @@ public class SuggestionResponse {
 
     public void setScore(double score) {
         this.score = score;
+    }
+
+    public String getAsciiname() {
+        return asciiname;
+    }
+
+    public void setAsciiname(String asciiname) {
+        this.asciiname = asciiname;
+    }
+
+    public String getAlternatename() {
+        return alternatename;
+    }
+
+    public void setAlternatename(String alternatename) {
+        this.alternatename = alternatename;
+    }
+
+    public Long getPopulation() {
+        return population;
+    }
+
+    public void setPopulation(Long population) {
+        this.population = population;
     }
 }

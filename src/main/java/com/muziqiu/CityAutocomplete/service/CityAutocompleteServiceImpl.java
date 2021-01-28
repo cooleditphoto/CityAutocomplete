@@ -85,11 +85,11 @@ public class CityAutocompleteServiceImpl implements CityAutocompleteService {
 
     private SuggestionResponse setSuggestionResponse(Geoname geoname, String query, double latitude, double longitude) {
         double score = calculateScoreByQueryandLocationandPopulation(geoname, query, latitude, longitude);
-        return new SuggestionResponse(geoname.getGeonameId(), geoname.getName(), geoname.getLongitude(), geoname.getLatitude(), score);
+        return new SuggestionResponse(geoname.getGeonameId(), geoname.getName(), geoname.getAsciiname(),geoname.getAlternatename(),geoname.getPopulation(),geoname.getLongitude(), geoname.getLatitude(), score);
     }
 
     private SuggestionResponse setSuggestionResponse(Geoname geoname, String query) {
         double score = calculateScoreByQueryandPopulation(geoname, query);
-        return new SuggestionResponse(geoname.getGeonameId(), geoname.getName(), geoname.getLongitude(), geoname.getLatitude(), score);
+        return new SuggestionResponse(geoname.getGeonameId(), geoname.getName(), geoname.getAsciiname(),geoname.getAlternatename(),geoname.getPopulation(),geoname.getLongitude(), geoname.getLatitude(), score);
     }
 }
