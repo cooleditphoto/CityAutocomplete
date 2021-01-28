@@ -28,6 +28,7 @@ public class CityAutocompleteController {
                                        @RequestParam(value = "latitude", required = false) Double latitude, @RequestParam(value = "longitude", required = false) Double longitude) {
         try {
             if (query == null || "".equals(query)) {
+                log.error("the request param q is not present");
                 return RestResponse.fail(ResultCode.NO_REQUIRED_PARAM);
             }
             log.info("the request params: query name: " + query + " latitude: " + latitude + " longitude: " + longitude);
@@ -41,6 +42,7 @@ public class CityAutocompleteController {
                 return RestResponse.succuess(suggestionResponseList);
             }
         } catch (MethodArgumentTypeMismatchException exc) {
+            log.error("Method Argument Type Mismatch Exception, q: " + query + " latitude: " + latitude + " longitude: " + longitude);
             throw new ResponseStatusException(
                     HttpStatus.BAD_REQUEST, "bad request", exc);
         }

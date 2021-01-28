@@ -64,7 +64,7 @@ public class CityAutocompleteServiceImpl implements CityAutocompleteService {
         //the distance under 5km score+=0.5, under 10km score+=0.4, under 15km score+= 0.3, under 25km score+=0.2, under 50km score+=0.1
         double score = calculateScoreByQueryandPopulation(geoname, query);
 
-        double distance = DistanceCalculation.calculateDistance(latitude, longitude, geoname.getLongitude(), geoname.getLatitude());
+        double distance = DistanceCalculation.calculateDistance(latitude, longitude, geoname.getLatitude(), geoname.getLongitude());
 
         if (distance <= 5) {
             score += 0.5;
